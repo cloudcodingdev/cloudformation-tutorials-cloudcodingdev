@@ -1,0 +1,34 @@
+
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  VersioningStatus:
+    Type: String
+    AllowedValues:
+      - Suspended
+      - Enabled
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: !Ref VersioningStatus
+
+Outputs:
+  s3arn:
+    Value: !GetAtt
+      - S3Bucket
+      - Arn
+    Description: Arn for website hosted on S3
+
+
+
+
+
+
+
+
+
+
+
